@@ -11,6 +11,9 @@ class AlbumsViewController: UIViewController {
     
     private let reuseIdentifier = "AlbumCell"
     private let sideInsetDistance: CGFloat = 16
+    private let interitemSpacing: CGFloat = 16
+    var albumsView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +24,10 @@ class AlbumsViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.minimumLineSpacing = 1
-        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 16
+        layout.minimumInteritemSpacing = interitemSpacing
         
-        let albumsView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
+        albumsView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
         albumsView.translatesAutoresizingMaskIntoConstraints = false
         albumsView.showsVerticalScrollIndicator = false
         albumsView.backgroundColor = .systemBackground
@@ -59,18 +62,18 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return MusicData.shared.albums.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: reuseIdentifier,
-            for: indexPath) as? AlbumCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? AlbumCell else {
             fatalError("Unable to dequeue AlbumCell")
         }
         
-        let w = CGFloat((view.bounds.width - sideInsetDistance * 2) / 2)
-        cell.configure(cellWidth: w.rounded(.down))
+        let width = CGFloat((view.bounds.width - interitemSpacing - sideInsetDistance * 2) / 2)
+        cell.configure(
+            cellWidth: width.rounded(.down),
+            album: MusicData.shared.albums[indexPath.row])
         
         return cell
     }

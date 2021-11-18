@@ -9,16 +9,18 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    var collectionVC: UIViewController!
+    var albumsViewController: AlbumsViewController!
     lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for music albums"
         searchController.searchBar.searchBarStyle = .default
+        searchController.automaticallyShowsCancelButton = false
+        
         return searchController
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View did load")
@@ -34,7 +36,7 @@ class SearchViewController: UIViewController {
         if segue.identifier == "EmbedCollectionViewInSearch" {
             if let vc = segue.destination as? AlbumsViewController {
                 print("Found AlbumsCollectionVC in SearchVC!")
-                self.collectionVC = vc
+                self.albumsViewController = vc
             }
         }
     }
@@ -44,13 +46,21 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Search clicked")
+        print("Search clicked \(searchBar.text!)")
+        Searcher.shared.searchAlbums(searchText: searchBar.text!) { [weak self] success in
+            print("Success???????? \(success), albums count \(MusicData.shared.albums.count)")
+            if success {
+                self?.albumsViewController.albumsView.reloadData()
+            }
+        }
+        albumsViewController.albumsView.reloadData()
+        searchController.isActive = false
     }
 }
 
 extension SearchViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        print("Search updating \(searchController.searchBar.text!)")
+        //print("Search updating \(searchController.searchBar.text!)")
     }
 }
