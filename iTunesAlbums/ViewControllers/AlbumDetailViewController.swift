@@ -11,11 +11,12 @@ class AlbumDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //navigationItem.largeTitleDisplayMode = .never
+        setupView()
     }
     
-
+    func setupView() {
+        
+    }
     
 
 }

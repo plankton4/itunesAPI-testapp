@@ -9,6 +9,9 @@ import UIKit
 
 class AlbumsViewController: UIViewController {
     
+    private let reuseIdentifier = "AlbumCell"
+    private let sideInsetDistance: CGFloat = 8
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -17,9 +20,10 @@ class AlbumsViewController: UIViewController {
     func setupView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.estimatedItemSize = .zero
-        let cellSize = CGSize(width: 100, height: 100)
-        layout.itemSize = cellSize
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 0
+        
         let albumsView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
         albumsView.translatesAutoresizingMaskIntoConstraints = false
         albumsView.showsVerticalScrollIndicator = false
@@ -27,11 +31,14 @@ class AlbumsViewController: UIViewController {
         albumsView.delegate = self
         albumsView.dataSource = self
         albumsView.contentInset = UIEdgeInsets(
-            top: 8, left: 8, bottom: 8, right: 8)
-        //let nibName = UINib(nibName: "SquarePhotoCell", bundle: nil)
-        //bottomPhotoView.register(nibName, forCellWithReuseIdentifier: reuseIdentifier)
-        //let cell = UICollectionViewCell(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        albumsView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DOGE")
+            top: 8,
+            left: sideInsetDistance,
+            bottom: 8,
+            right: sideInsetDistance)
+        
+        let nibName = UINib(nibName: "AlbumCell", bundle: nil)
+        albumsView.register(nibName, forCellWithReuseIdentifier: reuseIdentifier)
+        
         view.addSubview(albumsView)
         
         NSLayoutConstraint.activate([
@@ -40,8 +47,6 @@ class AlbumsViewController: UIViewController {
             albumsView.topAnchor.constraint(equalTo: view.topAnchor),
             albumsView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
-        
     }
     
     
@@ -58,11 +63,15 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DOGE", for: indexPath)
-        //cell.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        //let cell = UICollectionViewCell(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: reuseIdentifier,
+            for: indexPath) as? AlbumCell else {
+            fatalError("Unable to dequeue AlbumCell")
+        }
         
-        cell.backgroundColor = .systemPurple
+        let w = CGFloat((view.bounds.width - sideInsetDistance * 2) / 2)
+        cell.configure(cellWidth: w.rounded(.down))
+        
         return cell
     }
     

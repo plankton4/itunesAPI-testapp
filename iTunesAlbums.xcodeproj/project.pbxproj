@@ -16,6 +16,8 @@
 		9B6776D127455734006F5E8B /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6776D027455734006F5E8B /* AlbumsViewController.swift */; };
 		9BA5D1E42745611E002FC10C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1E32745611E002FC10C /* HistoryViewController.swift */; };
 		9BA5D1E62746018E002FC10C /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1E52746018E002FC10C /* AlbumDetailViewController.swift */; };
+		9BA5D1E927462AE3002FC10C /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1E727462AE3002FC10C /* AlbumCell.swift */; };
+		9BA5D1EA27462AE3002FC10C /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA5D1E827462AE3002FC10C /* AlbumCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		9B6776D027455734006F5E8B /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		9BA5D1E32745611E002FC10C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		9BA5D1E52746018E002FC10C /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
+		9BA5D1E727462AE3002FC10C /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
+		9BA5D1E827462AE3002FC10C /* AlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +66,14 @@
 		9B6776B727453320006F5E8B /* iTunesAlbums */ = {
 			isa = PBXGroup;
 			children = (
+				9BA5D1EB27462AFF002FC10C /* Views */,
+				9B6776C627453321006F5E8B /* Info.plist */,
 				9B6776B827453320006F5E8B /* AppDelegate.swift */,
 				9B6776BA27453320006F5E8B /* SceneDelegate.swift */,
-				9BA5D1E227456088002FC10C /* ViewControllers */,
-				9B6776BE27453320006F5E8B /* Main.storyboard */,
 				9B6776C127453321006F5E8B /* Assets.xcassets */,
 				9B6776C327453321006F5E8B /* LaunchScreen.storyboard */,
-				9B6776C627453321006F5E8B /* Info.plist */,
+				9B6776BE27453320006F5E8B /* Main.storyboard */,
+				9BA5D1E227456088002FC10C /* ViewControllers */,
 			);
 			path = iTunesAlbums;
 			sourceTree = "<group>";
@@ -82,6 +87,23 @@
 				9BA5D1E52746018E002FC10C /* AlbumDetailViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9BA5D1EB27462AFF002FC10C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9BA5D1EC27462B11002FC10C /* AlbumCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9BA5D1EC27462B11002FC10C /* AlbumCell */ = {
+			isa = PBXGroup;
+			children = (
+				9BA5D1E827462AE3002FC10C /* AlbumCell.xib */,
+				9BA5D1E727462AE3002FC10C /* AlbumCell.swift */,
+			);
+			path = AlbumCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +167,7 @@
 				9B6776C527453321006F5E8B /* LaunchScreen.storyboard in Resources */,
 				9B6776C227453321006F5E8B /* Assets.xcassets in Resources */,
 				9B6776C027453320006F5E8B /* Main.storyboard in Resources */,
+				9BA5D1EA27462AE3002FC10C /* AlbumCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +181,7 @@
 				9B6776D127455734006F5E8B /* AlbumsViewController.swift in Sources */,
 				9BA5D1E42745611E002FC10C /* HistoryViewController.swift in Sources */,
 				9B6776BD27453320006F5E8B /* SearchViewController.swift in Sources */,
+				9BA5D1E927462AE3002FC10C /* AlbumCell.swift in Sources */,
 				9B6776B927453320006F5E8B /* AppDelegate.swift in Sources */,
 				9B6776BB27453320006F5E8B /* SceneDelegate.swift in Sources */,
 				9BA5D1E62746018E002FC10C /* AlbumDetailViewController.swift in Sources */,

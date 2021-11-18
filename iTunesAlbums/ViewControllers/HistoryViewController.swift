@@ -16,10 +16,12 @@ class HistoryViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        //navigationController?.navigationBar.prefersLargeTitles = true
+        setupView()
     }
     
-  
+    func setupView() {
+        
+    }
     
 
 }
@@ -38,6 +40,6 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

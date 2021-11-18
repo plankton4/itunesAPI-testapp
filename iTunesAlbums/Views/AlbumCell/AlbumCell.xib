@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AlbumCell" customModule="iTunesAlbums" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="234" height="296"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="234" height="296"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XCU-pQ-CSA">
+                        <rect key="frame" x="8" y="9" width="218" height="215.5"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="XCU-pQ-CSA" secondAttribute="height" multiplier="1:1" id="WXS-xn-jTN"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Song name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqG-Ik-8Ak">
+                        <rect key="frame" x="74" y="234" width="86" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVQ-ht-lZf">
+                        <rect key="frame" x="73" y="263" width="88" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YVQ-ht-lZf" secondAttribute="bottom" constant="8" id="4Kv-bL-0bx"/>
+                <constraint firstItem="YVQ-ht-lZf" firstAttribute="top" secondItem="vqG-Ik-8Ak" secondAttribute="bottom" constant="8" id="6Wo-mr-pqR"/>
+                <constraint firstItem="XCU-pQ-CSA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="CUD-wN-BfL"/>
+                <constraint firstItem="XCU-pQ-CSA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="IB6-qN-3Wu"/>
+                <constraint firstItem="YVQ-ht-lZf" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="SgW-bk-r0E"/>
+                <constraint firstItem="vqG-Ik-8Ak" firstAttribute="top" secondItem="XCU-pQ-CSA" secondAttribute="bottom" constant="8" id="ehc-M3-yfz"/>
+                <constraint firstAttribute="trailing" secondItem="XCU-pQ-CSA" secondAttribute="trailing" constant="8" id="taH-bO-iOa"/>
+                <constraint firstItem="vqG-Ik-8Ak" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="z7R-QD-ev6"/>
+            </constraints>
+            <size key="customSize" width="234" height="296"/>
+            <connections>
+                <outlet property="imageView" destination="XCU-pQ-CSA" id="R0t-Td-PRN"/>
+            </connections>
+            <point key="canvasLocation" x="169.56521739130437" y="85.044642857142847"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

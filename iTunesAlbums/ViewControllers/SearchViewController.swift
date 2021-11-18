@@ -7,16 +7,9 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        print("Search updating \(searchController.searchBar.text!)")
-    }
+class SearchViewController: UIViewController {
     
-    
-    @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var containerView: UIView!
     var collectionVC: UIViewController!
-    
     lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -30,7 +23,6 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
         super.viewDidLoad()
         print("View did load")
         setupView()
-        
     }
     
     func setupView() {
@@ -54,6 +46,11 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Search clicked")
     }
+}
+
+extension SearchViewController: UISearchResultsUpdating {
     
-    
+    func updateSearchResults(for searchController: UISearchController) {
+        print("Search updating \(searchController.searchBar.text!)")
+    }
 }
