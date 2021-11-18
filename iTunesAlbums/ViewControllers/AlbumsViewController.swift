@@ -10,7 +10,7 @@ import UIKit
 class AlbumsViewController: UIViewController {
     
     private let reuseIdentifier = "AlbumCell"
-    private let sideInsetDistance: CGFloat = 8
+    private let sideInsetDistance: CGFloat = 16
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -19,8 +19,11 @@ class AlbumCell: UICollectionViewCell {
     func configure(cellWidth: CGFloat) {
         imageView.layer.cornerRadius = 10
         
+        let widthConstraint = self.widthAnchor.constraint(equalToConstant: cellWidth)
+        // also i've changed priority to top and bottom constraints in AlbumCell.xib
+        widthConstraint.priority = UILayoutPriority(999)
         NSLayoutConstraint.activate([
-            self.widthAnchor.constraint(equalToConstant: cellWidth)
+            widthConstraint
         ])
     }
 

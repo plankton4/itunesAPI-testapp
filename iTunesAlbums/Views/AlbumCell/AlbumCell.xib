@@ -22,7 +22,7 @@
                         <rect key="frame" x="8" y="9" width="218" height="215.5"/>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="XCU-pQ-CSA" secondAttribute="height" multiplier="1:1" id="WXS-xn-jTN"/>
+                            <constraint firstAttribute="width" secondItem="XCU-pQ-CSA" secondAttribute="height" multiplier="1:1" priority="999" id="WXS-xn-jTN"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Song name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqG-Ik-8Ak">
@@ -42,9 +42,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" systemColor="systemIndigoColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YVQ-ht-lZf" secondAttribute="bottom" constant="8" id="4Kv-bL-0bx"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YVQ-ht-lZf" secondAttribute="bottom" priority="999" constant="8" id="4Kv-bL-0bx"/>
                 <constraint firstItem="YVQ-ht-lZf" firstAttribute="top" secondItem="vqG-Ik-8Ak" secondAttribute="bottom" constant="8" id="6Wo-mr-pqR"/>
-                <constraint firstItem="XCU-pQ-CSA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="CUD-wN-BfL"/>
+                <constraint firstItem="XCU-pQ-CSA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" priority="999" constant="8" id="CUD-wN-BfL"/>
                 <constraint firstItem="XCU-pQ-CSA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="IB6-qN-3Wu"/>
                 <constraint firstItem="YVQ-ht-lZf" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="SgW-bk-r0E"/>
                 <constraint firstItem="vqG-Ik-8Ak" firstAttribute="top" secondItem="XCU-pQ-CSA" secondAttribute="bottom" constant="8" id="ehc-M3-yfz"/>
