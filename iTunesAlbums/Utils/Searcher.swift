@@ -49,7 +49,9 @@ class Searcher {
     }
     
     func searchSongs(albumId: Int, completion: @escaping (Bool) -> Void) {
-        
+        if let url = getUrl(searchTerm: String(albumId), type: .song) {
+            search(url: url, type: .song, completion: completion)
+        }
     }
     
     func cancelSearch() {

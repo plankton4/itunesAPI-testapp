@@ -11,7 +11,7 @@ class Album {
     var artistName: String
     var albumName: String
     var smallImageUrl: String
-    var collectionId: Int
+    var albumId: Int
     
     lazy var mediumImageUrl: String = {
         return smallImageUrl.replacingOccurrences(of: "source/100x100", with: "source/450x450")
@@ -26,6 +26,6 @@ class Album {
         self.artistName = artistName
         self.albumName = albumName
         self.smallImageUrl = smallImageUrl
-        self.collectionId = collectionId
+        self.albumId = collectionId
     }
 }

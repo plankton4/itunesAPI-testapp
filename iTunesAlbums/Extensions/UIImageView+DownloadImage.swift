@@ -9,7 +9,9 @@ import UIKit
 
 extension UIImageView {
     
-    func loadImage(url: URL) -> URLSessionDownloadTask {
+    @discardableResult func loadImage(url: URL) -> URLSessionDownloadTask {
+        print("Load image \(url)")
+        
         let session = URLSession.shared
         let downloadTask = session.downloadTask(with: url) { [weak self] url, _, error in
             if error == nil,

@@ -81,10 +81,8 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "AlbumDetailIdentifier") as? AlbumDetailViewController
         {
-            //vc.initialIndex = indexPath.item
-            //vc.photos = UserData.shared.photos
+            vc.album = MusicData.shared.albums[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
-        //performSegue(withIdentifier: "AlbumDetailSegue", sender: self)
     }
 }

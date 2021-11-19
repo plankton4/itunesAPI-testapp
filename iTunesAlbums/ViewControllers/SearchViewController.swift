@@ -12,7 +12,6 @@ class SearchViewController: UIViewController {
     var albumsViewController: AlbumsViewController!
     lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for music albums"
         searchController.searchBar.searchBarStyle = .default
@@ -49,7 +48,7 @@ extension SearchViewController: UISearchBarDelegate {
         print("Search clicked \(searchBar.text!)")
         Searcher.shared.searchAlbums(searchText: searchBar.text!) { [weak self] success in
             print("Success? \(success), albums count \(MusicData.shared.albums.count)")
-            if success {
+            if success && !MusicData.shared.albums.isEmpty {
                 self?.albumsViewController.albumsView.reloadData()
             } else {
                 Utils.showAlert(title: "Oops!", message: "Nothing found.", firstButtonText: "☹️")
@@ -60,12 +59,5 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         Searcher.shared.cancelSearch()
-    }
-}
-
-extension SearchViewController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        //print("Search updating \(searchController.searchBar.text!)")
     }
 }

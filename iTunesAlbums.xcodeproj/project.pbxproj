@@ -76,15 +76,15 @@
 		9B6776B727453320006F5E8B /* iTunesAlbums */ = {
 			isa = PBXGroup;
 			children = (
+				9B6776C627453321006F5E8B /* Info.plist */,
+				9B6776C127453321006F5E8B /* Assets.xcassets */,
+				9BA5D1ED27464BAA002FC10C /* Delegates */,
 				9BA5D1F82746C5FB002FC10C /* Extensions */,
+				9B6776BE27453320006F5E8B /* Main.storyboard */,
 				9BA5D1F127464E59002FC10C /* Models */,
 				9BA5D1EE27464BEC002FC10C /* Utils */,
-				9BA5D1EB27462AFF002FC10C /* Views */,
-				9B6776C627453321006F5E8B /* Info.plist */,
-				9BA5D1ED27464BAA002FC10C /* Delegates */,
-				9B6776C127453321006F5E8B /* Assets.xcassets */,
-				9B6776BE27453320006F5E8B /* Main.storyboard */,
 				9BA5D1E227456088002FC10C /* ViewControllers */,
+				9BA5D1EB27462AFF002FC10C /* Views */,
 			);
 			path = iTunesAlbums;
 			sourceTree = "<group>";
