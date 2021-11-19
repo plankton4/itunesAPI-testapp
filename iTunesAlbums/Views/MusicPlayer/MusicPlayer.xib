@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2rF-lo-iRG" customClass="MusicPlayer" customModule="iTunesAlbums" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yj-sf-STJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="P7i-QX-XVO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="prominent"/>
+                </visualEffectView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4aP-qy-mLy">
+                    <rect key="frame" x="16" y="8" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4aP-qy-mLy" secondAttribute="height" multiplier="1:1" id="tfe-OM-kRK"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Gs-Kh-yh0">
+                    <rect key="frame" x="328" y="14.5" width="31" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="31" id="8Tc-Cg-sLK"/>
+                    </constraints>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
+                    <connections>
+                        <action selector="playButtonClicked:" destination="2rF-lo-iRG" eventType="touchUpInside" id="Tbw-Pi-bOp"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaY-8L-HvX">
+                    <rect key="frame" x="76" y="19.5" width="252" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="aaP-8u-huz"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="3Gs-Kh-yh0" firstAttribute="centerY" secondItem="2rF-lo-iRG" secondAttribute="centerY" id="35R-R5-ExL"/>
+                <constraint firstItem="AaY-8L-HvX" firstAttribute="leading" secondItem="4aP-qy-mLy" secondAttribute="trailing" constant="16" id="6GN-F3-RNy"/>
+                <constraint firstItem="0yj-sf-STJ" firstAttribute="top" secondItem="2rF-lo-iRG" secondAttribute="top" id="GlU-2h-wKP"/>
+                <constraint firstItem="aaP-8u-huz" firstAttribute="bottom" secondItem="4aP-qy-mLy" secondAttribute="bottom" constant="8" id="KUL-JI-zkC"/>
+                <constraint firstItem="4aP-qy-mLy" firstAttribute="top" secondItem="2rF-lo-iRG" secondAttribute="top" constant="8" id="PrR-sn-NbF"/>
+                <constraint firstAttribute="trailing" secondItem="3Gs-Kh-yh0" secondAttribute="trailing" constant="16" id="VQb-Zk-GZS"/>
+                <constraint firstItem="0yj-sf-STJ" firstAttribute="leading" secondItem="aaP-8u-huz" secondAttribute="leading" id="W1b-ix-paf"/>
+                <constraint firstItem="AaY-8L-HvX" firstAttribute="centerY" secondItem="2rF-lo-iRG" secondAttribute="centerY" id="X6H-Oa-wJy"/>
+                <constraint firstItem="4aP-qy-mLy" firstAttribute="leading" secondItem="aaP-8u-huz" secondAttribute="leading" constant="16" id="XhN-OS-0gY"/>
+                <constraint firstItem="3Gs-Kh-yh0" firstAttribute="leading" secondItem="AaY-8L-HvX" secondAttribute="trailing" id="lVK-PF-jTI"/>
+                <constraint firstAttribute="bottom" secondItem="0yj-sf-STJ" secondAttribute="bottom" id="mDZ-qa-bxl"/>
+                <constraint firstItem="aaP-8u-huz" firstAttribute="trailing" secondItem="0yj-sf-STJ" secondAttribute="trailing" id="vva-Nd-xPU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="4aP-qy-mLy" id="Rxr-yG-OiA"/>
+                <outlet property="playButton" destination="3Gs-Kh-yh0" id="Nzh-XQ-H3g"/>
+                <outlet property="songNameLabel" destination="AaY-8L-HvX" id="4qJ-SU-cNs"/>
+            </connections>
+            <point key="canvasLocation" x="48.550724637681164" y="281.91964285714283"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

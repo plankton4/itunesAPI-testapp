@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AVFoundation
 
 class AlbumDetailViewController: UIViewController {
     @IBOutlet var headerView: UIView!
@@ -16,7 +15,8 @@ class AlbumDetailViewController: UIViewController {
     @IBOutlet var artistLabel: UILabel!
     @IBOutlet var imageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet var imageViewHeightConstraint: NSLayoutConstraint!
-    var player: AVPlayer?
+    var musicPlayerView: MusicPlayer!
+    let musicPlayerViewHeight: CGFloat = 60
     var album: Album!
     var tracks: [Track] = []
 
@@ -26,6 +26,7 @@ class AlbumDetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         setupView()
+        print("AlbumDetail didLoad \(album.albumId)")
         Searcher.shared.searchSongs(albumId: album.albumId) { [weak self] success in
             if success {
                 if let self = self, let tracks = MusicData.shared.tracks[self.album.albumId] {
@@ -52,15 +53,30 @@ class AlbumDetailViewController: UIViewController {
     }
     
     func setupView() {
-        //tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: musicPlayerViewHeight, right: 0)
         albumLabel.text = album.albumName
         artistLabel.text = album.artistName
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         headerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.layer.cornerRadius = 10
         imageView.image = UIImage(systemName: "arrow.down.square.fill")
         if let largeUrl = URL(string: album.largeImageUrl) {
             imageView.loadImage(url: largeUrl)
         }
+        
+        musicPlayerView = MusicPlayer.instanceFromNib()
+        view.addSubview(musicPlayerView)
+        musicPlayerView.configure()
+        
+        
+        NSLayoutConstraint.activate([
+            musicPlayerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            musicPlayerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            musicPlayerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            musicPlayerView.heightAnchor.constraint(equalToConstant: musicPlayerViewHeight)
+        ])
     }
     
 
@@ -80,9 +96,6 @@ extension AlbumDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let url = URL(string: tracks[indexPath.row].previewUrl)
-        let playerItem = AVPlayerItem(url: url!)
-        player = AVPlayer(playerItem: playerItem)
-        player?.play()
+        musicPlayerView.playTrack(track: tracks[indexPath.row], artworkUrl: album.smallImageUrl)
     }
 }

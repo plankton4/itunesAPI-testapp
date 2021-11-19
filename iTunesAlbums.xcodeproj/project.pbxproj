@@ -23,6 +23,8 @@
 		9BA5D1F727465DE5002FC10C /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1F627465DE5002FC10C /* MusicData.swift */; };
 		9BA5D1FA2746C60B002FC10C /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1F92746C60B002FC10C /* UIImageView+DownloadImage.swift */; };
 		9BA5D1FC27475265002FC10C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1FB27475265002FC10C /* Utils.swift */; };
+		9BA5D1FE2747AF6D002FC10C /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1FD2747AF6D002FC10C /* MusicPlayer.swift */; };
+		9BA5D2002747AFBF002FC10C /* MusicPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA5D1FF2747AFBF002FC10C /* MusicPlayer.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		9BA5D1F627465DE5002FC10C /* MusicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicData.swift; sourceTree = "<group>"; };
 		9BA5D1F92746C60B002FC10C /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		9BA5D1FB27475265002FC10C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		9BA5D1FD2747AF6D002FC10C /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		9BA5D1FF2747AFBF002FC10C /* MusicPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPlayer.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				9BA5D1EC27462B11002FC10C /* AlbumCell */,
+				9BA5D2012747B2D2002FC10C /* MusicPlayer */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +156,15 @@
 				9BA5D1F92746C60B002FC10C /* UIImageView+DownloadImage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9BA5D2012747B2D2002FC10C /* MusicPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				9BA5D1FD2747AF6D002FC10C /* MusicPlayer.swift */,
+				9BA5D1FF2747AFBF002FC10C /* MusicPlayer.xib */,
+			);
+			path = MusicPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +227,7 @@
 			files = (
 				9B6776C227453321006F5E8B /* Assets.xcassets in Resources */,
 				9B6776C027453320006F5E8B /* Main.storyboard in Resources */,
+				9BA5D2002747AFBF002FC10C /* MusicPlayer.xib in Resources */,
 				9BA5D1EA27462AE3002FC10C /* AlbumCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +243,7 @@
 				9BA5D1F52746589F002FC10C /* Track.swift in Sources */,
 				9BA5D1E42745611E002FC10C /* HistoryViewController.swift in Sources */,
 				9B6776BD27453320006F5E8B /* SearchViewController.swift in Sources */,
+				9BA5D1FE2747AF6D002FC10C /* MusicPlayer.swift in Sources */,
 				9BA5D1E927462AE3002FC10C /* AlbumCell.swift in Sources */,
 				9BA5D1FC27475265002FC10C /* Utils.swift in Sources */,
 				9BA5D1F727465DE5002FC10C /* MusicData.swift in Sources */,
