@@ -52,6 +52,10 @@ class Searcher {
         
     }
     
+    func cancelSearch() {
+        dataTask?.cancel()
+    }
+    
     private func search(url: URL, type: MusicData.DataType, completion: @escaping (Bool) -> Void) {
         print("Search url \(url)")
         dataTask?.cancel()

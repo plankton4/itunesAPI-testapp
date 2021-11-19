@@ -22,6 +22,7 @@
 		9BA5D1F52746589F002FC10C /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1F42746589F002FC10C /* Track.swift */; };
 		9BA5D1F727465DE5002FC10C /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1F627465DE5002FC10C /* MusicData.swift */; };
 		9BA5D1FA2746C60B002FC10C /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1F92746C60B002FC10C /* UIImageView+DownloadImage.swift */; };
+		9BA5D1FC27475265002FC10C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1FB27475265002FC10C /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		9BA5D1F42746589F002FC10C /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		9BA5D1F627465DE5002FC10C /* MusicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicData.swift; sourceTree = "<group>"; };
 		9BA5D1F92746C60B002FC10C /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		9BA5D1FB27475265002FC10C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				9BA5D1EF27464BF7002FC10C /* Searcher.swift */,
+				9BA5D1FB27475265002FC10C /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				9BA5D1E42745611E002FC10C /* HistoryViewController.swift in Sources */,
 				9B6776BD27453320006F5E8B /* SearchViewController.swift in Sources */,
 				9BA5D1E927462AE3002FC10C /* AlbumCell.swift in Sources */,
+				9BA5D1FC27475265002FC10C /* Utils.swift in Sources */,
 				9BA5D1F727465DE5002FC10C /* MusicData.swift in Sources */,
 				9B6776B927453320006F5E8B /* AppDelegate.swift in Sources */,
 				9BA5D1F327464E77002FC10C /* Album.swift in Sources */,

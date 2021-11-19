@@ -36,7 +36,7 @@ class AlbumsViewController: UIViewController {
         albumsView.contentInset = UIEdgeInsets(
             top: 8,
             left: sideInsetDistance,
-            bottom: 8,
+            bottom: 20,
             right: sideInsetDistance)
         
         let nibName = UINib(nibName: "AlbumCell", bundle: nil)

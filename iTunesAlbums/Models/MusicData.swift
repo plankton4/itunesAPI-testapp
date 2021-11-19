@@ -23,8 +23,7 @@ class MusicData {
                 let album = Album(
                     artistName: result.artistName ?? "Unknown",
                     albumName: result.albumName ?? "Unknown",
-                    mediumImageUrl: getImageUrl(size: .medium, originalUrl: result.artworkSmall) ?? "",
-                    largeImageUrl: getImageUrl(size: .large, originalUrl: result.artworkSmall) ?? "",
+                    smallImageUrl: result.artworkSmall ?? "",
                     collectionId: result.collectionId ?? -1)
                 albums.append(album)
             }
@@ -33,22 +32,6 @@ class MusicData {
         case .unknown:
             break
         }
-    }
-    
-    func getImageUrl(size: ImageSize, originalUrl: String?) -> String? {
-        guard let originalUrl = originalUrl else {
-            return nil
-        }
-        
-        switch size {
-        case .small:
-            return originalUrl
-        case .medium:
-            return originalUrl.replacingOccurrences(of: "100x100", with: "450x450")
-        case .large:
-            return originalUrl.replacingOccurrences(of: "100x100", with: "700x700")
-        }
-        
     }
 }
 
