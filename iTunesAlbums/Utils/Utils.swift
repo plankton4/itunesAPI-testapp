@@ -8,6 +8,12 @@
 import UIKit
 
 struct Utils {
+    
+    static var imageDownloadSession: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        configuration.waitsForConnectivity = true
+        return URLSession(configuration: configuration)
+    }()
 
     static func showAlert(title: String? = nil, message: String? = nil, firstButtonText: String? = "👍") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
