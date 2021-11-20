@@ -31,7 +31,7 @@ class AlbumDetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         setupView()
-        print("AlbumDetail didLoad \(album.albumId)")
+        
         Searcher.shared.searchSongs(albumId: album.albumId) { [weak self] success in
             if success {
                 if let self = self, let tracks = MusicData.shared.tracks[self.album.albumId] {

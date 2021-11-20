@@ -34,7 +34,6 @@ class HistoryViewController: UIViewController {
             object: nil,
             queue: OperationQueue.main) { [weak self] _ in
                 if let weakSelf = self {
-                    print("Notif received")
                     weakSelf.tableView.reloadData()
                     if weakSelf.dummyLabel != nil {
                         weakSelf.hideDummy()

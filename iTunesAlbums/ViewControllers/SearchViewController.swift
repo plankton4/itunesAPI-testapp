@@ -26,7 +26,6 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View did load")
         setupView()
     }
     
@@ -38,7 +37,6 @@ class SearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedCollectionViewInSearch" {
             if let vc = segue.destination as? AlbumsViewController {
-                print("Found AlbumsCollectionVC in SearchVC!")
                 albumsViewController = vc
             }
         }
@@ -49,7 +47,6 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Search clicked \(searchBar.text!)")
         guard !searchBar.text!.isEmpty else {
             return
         }

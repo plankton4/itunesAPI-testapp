@@ -53,7 +53,6 @@ class Searcher {
     }
     
     func searchSongs(albumId: Int, completion: @escaping (Bool) -> Void) {
-        print("Search songs")
         if let url = getUrl(searchTerm: String(albumId), type: .song) {
             search(url: url, type: .song, completion: completion)
         }
@@ -64,20 +63,17 @@ class Searcher {
     }
     
     private func search(url: URL, type: MusicData.DataType, completion: @escaping (Bool) -> Void) {
-        print("Search url \(url)")
         dataTask?.cancel()
         dataTask = session.dataTask(with: url) { data, response, error in
-            var success = false
-            print("Data task end, error \(String(describing: error)), response \(String(describing: response))")
             if let error = error as NSError?, error.code == NSURLErrorCancelled {
                 return
             }
             
+            var success = false
+            
             if let httpResponse = response as? HTTPURLResponse,
                httpResponse.statusCode == 200, let data = data {
                 let searchResults = self.parse(data: data)
-                //print("SearchResults count \(searchResults.count)")
-                //print("SearchResults \(searchResults)")
                 MusicData.shared.fillData(data: searchResults, type: type)
                 success = true
             }

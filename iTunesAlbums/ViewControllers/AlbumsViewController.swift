@@ -71,7 +71,6 @@ class AlbumsViewController: UIViewController {
         showActivityIndicator()
         
         Searcher.shared.searchAlbums(searchText: text) { [weak self] success in
-            print("Success? \(success), albums count \(MusicData.shared.albums.count)")
             if success && !MusicData.shared.albums.isEmpty {
                 self?.albums = MusicData.shared.albums
                 self?.albumsView.reloadData()

@@ -88,7 +88,6 @@ class MusicPlayer: UIView {
     }
     
     @objc func finishedPlaying( _ notification: NSNotification) {
-        print("Finished playing!")
         let targetTime: CMTime = CMTimeMake(value: 0, timescale: 1)
         player?.seek(to: targetTime)
         playButtonChangeState(state: .play)
@@ -104,11 +103,9 @@ class MusicPlayer: UIView {
             object: nil,
             queue: OperationQueue.main) { [weak self] notification in
                 if let weakSelf = self {
-                    print("musicPlayerPlaceChangedNotification received")
                     if let userInfo = notification.userInfo {
                         if let musicPlayerObject = userInfo["musicPlayerObject"] as? MusicPlayer, musicPlayerObject !== weakSelf {
                             weakSelf.resetToDefaultState()
-                            print("Not equal")
                         }
                     }
                 }
