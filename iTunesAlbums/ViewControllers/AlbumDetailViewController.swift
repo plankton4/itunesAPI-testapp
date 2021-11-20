@@ -13,13 +13,12 @@
 import UIKit
 
 class AlbumDetailViewController: UIViewController {
+    
     @IBOutlet var headerView: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var albumLabel: UILabel!
     @IBOutlet var artistLabel: UILabel!
-    @IBOutlet var imageViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet var imageViewHeightConstraint: NSLayoutConstraint!
     var musicPlayerView: MusicPlayer!
     let musicPlayerViewHeight: CGFloat = 60
     var album: Album!
@@ -48,10 +47,9 @@ class AlbumDetailViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         let width = view.bounds.width * 0.6
-        imageViewHeightConstraint.constant = width
-        imageViewWidthConstraint.constant = width
-        
         NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: width),
+            imageView.heightAnchor.constraint(equalToConstant: width),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
@@ -76,8 +74,6 @@ class AlbumDetailViewController: UIViewController {
         musicPlayerView = MusicPlayer.instanceFromNib()
         view.addSubview(musicPlayerView)
         musicPlayerView.configure()
-        
-        
         NSLayoutConstraint.activate([
             musicPlayerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             musicPlayerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -85,8 +81,6 @@ class AlbumDetailViewController: UIViewController {
             musicPlayerView.heightAnchor.constraint(equalToConstant: musicPlayerViewHeight)
         ])
     }
-    
-
 }
 
 extension AlbumDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -99,8 +93,8 @@ extension AlbumDetailViewController: UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
             fatalError("Unable to dequeue 'Cell'")
         }
-        cell.textLabel?.text = tracks[indexPath.row].trackName
         
+        cell.textLabel?.text = tracks[indexPath.row].trackName
         return cell
     }
     

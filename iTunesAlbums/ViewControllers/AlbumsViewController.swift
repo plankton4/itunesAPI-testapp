@@ -21,6 +21,7 @@ class AlbumsViewController: UIViewController {
     var albums: [Album] = []
     var searchString: String? // when not nil, we should search right away
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()

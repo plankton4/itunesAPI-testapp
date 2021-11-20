@@ -26,7 +26,7 @@ class SearchHistory {
     
     func updateHistory(text: String) {
         if !history.isEmpty && history.first! == text {
-            // we do not need the same search strings
+            // we do not need the same search strings in a row
             return
         }
         

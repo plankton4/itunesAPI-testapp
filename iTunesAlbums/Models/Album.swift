@@ -8,6 +8,7 @@
 import Foundation
 
 class Album {
+    
     var artistName: String
     var albumName: String
     var smallImageUrl: String

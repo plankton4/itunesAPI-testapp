@@ -17,6 +17,7 @@ class Searcher {
         return URLSession(configuration: configuration)
     }()
     
+    
     private init() {}
     
     private func getUrl(searchTerm: String, type: MusicData.DataType) -> URL? {

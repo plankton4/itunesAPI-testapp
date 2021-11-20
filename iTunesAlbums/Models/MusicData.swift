@@ -16,7 +16,6 @@ class MusicData {
     
     static let shared = MusicData()
     private let concurrentMusicDataQueue = DispatchQueue(label: "MusicDataQueue", attributes: .concurrent)
-    
     private var unsafeAlbums: [Album] = []
     var albums: [Album] {
         var albumsCopy: [Album] = []

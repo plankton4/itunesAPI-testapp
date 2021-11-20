@@ -24,12 +24,9 @@ class SearchViewController: UIViewController {
         return searchController
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-    }
-    
-    func setupView() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -41,7 +38,6 @@ class SearchViewController: UIViewController {
             }
         }
     }
-
 }
 
 extension SearchViewController: UISearchBarDelegate {
