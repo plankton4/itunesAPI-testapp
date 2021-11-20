@@ -46,15 +46,11 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Search clicked \(searchBar.text!)")
-        Searcher.shared.searchAlbums(searchText: searchBar.text!) { [weak self] success in
-            print("Success? \(success), albums count \(MusicData.shared.albums.count)")
-            if success && !MusicData.shared.albums.isEmpty {
-                self?.albumsViewController.albumsView.reloadData()
-            } else {
-                Utils.showAlert(title: "Oops!", message: "Nothing found.", firstButtonText: "☹️")
-            }
+        guard !searchBar.text!.isEmpty else {
+            return
         }
-        albumsViewController.albumsView.reloadData()
+        
+        albumsViewController.performSearch(text: searchBar.text!)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

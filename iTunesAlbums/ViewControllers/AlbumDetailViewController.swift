@@ -33,6 +33,8 @@ class AlbumDetailViewController: UIViewController {
                     self.tracks = tracks
                 }
                 self?.tableView.reloadData()
+            } else {
+                Utils.showAlert(title: "Oops!", message: "Nothing found.", firstButtonText: "☹️")
             }
         }
     }
@@ -89,7 +91,9 @@ extension AlbumDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
+            fatalError("Unable to dequeue 'Cell'")
+        }
         cell.textLabel?.text = tracks[indexPath.row].trackName
         
         return cell

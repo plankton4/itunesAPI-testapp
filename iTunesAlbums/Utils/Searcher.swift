@@ -48,7 +48,6 @@ class Searcher {
     
     func searchAlbums(searchText: String, completion: @escaping (Bool) -> Void) {
         if let url = getUrl(searchTerm: searchText, type: .album) {
-            MusicData.shared.clearAlbums()
             search(url: url, type: .album, completion: completion)
         }
     }

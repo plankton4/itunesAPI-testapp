@@ -11,6 +11,7 @@ class MusicData {
     
     static let shared = MusicData()
     private let concurrentMusicDataQueue = DispatchQueue(label: "MusicDataQueue", attributes: .concurrent)
+    
     private var unsafeAlbums: [Album] = []
     var albums: [Album] {
         var albumsCopy: [Album] = []
@@ -20,6 +21,7 @@ class MusicData {
         }
         return albumsCopy
     }
+    
     private var unsafeTracks: [Int: [Track]] = [:] // key - Album.albumId
     var tracks: [Int: [Track]] {
         var tracksCopy: [Int: [Track]] = [:]
@@ -50,7 +52,11 @@ class MusicData {
                         collectionId: result.collectionId ?? -1)
                     self.unsafeAlbums.append(album)
                 }
+                self.unsafeAlbums.sort {
+                    $0.albumName < $1.albumName
+                }
             case .song:
+                self.unsafeTracks.removeAll()
                 var localTracks: [Track] = []
                 for result in data where result.type == .song {
                     let track = Track(
@@ -65,15 +71,6 @@ class MusicData {
             case .unknown:
                 break
             }
-        }
-    }
-    
-    func clearAlbums() {
-        concurrentMusicDataQueue.async(flags: .barrier) { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.unsafeAlbums.removeAll()
         }
     }
 }

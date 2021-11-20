@@ -13,11 +13,15 @@ class AlbumsViewController: UIViewController {
     private let sideInsetDistance: CGFloat = 16
     private let interitemSpacing: CGFloat = 16
     var albumsView: UICollectionView!
-    
+    var albums: [Album] = []
+    var searchString: String? // when not nil, we should search right away
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        if let searchString = searchString {
+            performSearch(text: searchString, writeToHistory: false)
+        }
     }
     
     func setupView() {
@@ -52,6 +56,24 @@ class AlbumsViewController: UIViewController {
         ])
     }
     
+    func performSearch(text: String, writeToHistory: Bool = true) {
+        if writeToHistory {
+            SearchHistory.shared.updateHistory(text: text)
+        }
+        
+        albums.removeAll()
+        albumsView.reloadData()
+        
+        Searcher.shared.searchAlbums(searchText: text) { [weak self] success in
+            print("Success? \(success), albums count \(MusicData.shared.albums.count)")
+            if success && !MusicData.shared.albums.isEmpty {
+                self?.albums = MusicData.shared.albums
+                self?.albumsView.reloadData()
+            } else {
+                Utils.showAlert(title: "Oops!", message: "Nothing found.", firstButtonText: "☹️")
+            }
+        }
+    }
     
 }
 
@@ -62,7 +84,7 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MusicData.shared.albums.count
+        return albums.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,7 +95,7 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let width = CGFloat((view.bounds.width - interitemSpacing - sideInsetDistance * 2) / 2)
         cell.configure(
             cellWidth: width.rounded(.down),
-            album: MusicData.shared.albums[indexPath.row])
+            album: albums[indexPath.row])
         
         return cell
     }
@@ -81,7 +103,7 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "AlbumDetailIdentifier") as? AlbumDetailViewController
         {
-            vc.album = MusicData.shared.albums[indexPath.row]
+            vc.album = albums[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
     }

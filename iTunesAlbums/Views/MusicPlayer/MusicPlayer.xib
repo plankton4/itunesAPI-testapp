@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,10 +25,12 @@
                     <blurEffect style="prominent"/>
                 </visualEffectView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4aP-qy-mLy">
-                    <rect key="frame" x="16" y="8" width="44" height="44"/>
+                    <rect key="frame" x="16" y="6.5" width="44" height="47"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="4aP-qy-mLy" secondAttribute="height" multiplier="1:1" id="tfe-OM-kRK"/>
                     </constraints>
+                    <imageReference key="image" image="square" catalog="system" symbolScale="large"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="ultraLight"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Gs-Kh-yh0">
                     <rect key="frame" x="328" y="14.5" width="31" height="31"/>
@@ -75,6 +78,7 @@
     </objects>
     <resources>
         <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="square" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

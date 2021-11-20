@@ -25,6 +25,7 @@
 		9BA5D1FC27475265002FC10C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1FB27475265002FC10C /* Utils.swift */; };
 		9BA5D1FE2747AF6D002FC10C /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D1FD2747AF6D002FC10C /* MusicPlayer.swift */; };
 		9BA5D2002747AFBF002FC10C /* MusicPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA5D1FF2747AFBF002FC10C /* MusicPlayer.xib */; };
+		9BA5D203274803F5002FC10C /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA5D202274803F5002FC10C /* SearchHistory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		9BA5D1FB27475265002FC10C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		9BA5D1FD2747AF6D002FC10C /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		9BA5D1FF2747AFBF002FC10C /* MusicPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPlayer.xib; sourceTree = "<group>"; };
+		9BA5D202274803F5002FC10C /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				9BA5D1F227464E77002FC10C /* Album.swift */,
 				9BA5D1F42746589F002FC10C /* Track.swift */,
 				9BA5D1F627465DE5002FC10C /* MusicData.swift */,
+				9BA5D202274803F5002FC10C /* SearchHistory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				9BA5D1FE2747AF6D002FC10C /* MusicPlayer.swift in Sources */,
 				9BA5D1E927462AE3002FC10C /* AlbumCell.swift in Sources */,
 				9BA5D1FC27475265002FC10C /* Utils.swift in Sources */,
+				9BA5D203274803F5002FC10C /* SearchHistory.swift in Sources */,
 				9BA5D1F727465DE5002FC10C /* MusicData.swift in Sources */,
 				9B6776B927453320006F5E8B /* AppDelegate.swift in Sources */,
 				9BA5D1F327464E77002FC10C /* Album.swift in Sources */,
