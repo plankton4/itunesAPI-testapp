@@ -5,6 +5,10 @@
 //  Created by Dmitry Iv on 18.11.2021.
 //
 
+/**
+ * Second page (History)
+ */
+
 import UIKit
 
 class HistoryViewController: UIViewController {

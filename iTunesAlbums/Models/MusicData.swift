@@ -5,6 +5,11 @@
 //  Created by Dmitry Iv on 18.11.2021.
 //
 
+/**
+ * MusicData is class for storing  information received from Searcher
+ * primarily is used as a model for AlbumsViewController and AlbumDetailViewController
+ */
+
 import Foundation
 
 class MusicData {

@@ -5,6 +5,10 @@
 //  Created by Dmitry Iv on 17.11.2021.
 //
 
+/**
+ * First page (Search)
+ */
+
 import UIKit
 
 class SearchViewController: UIViewController {

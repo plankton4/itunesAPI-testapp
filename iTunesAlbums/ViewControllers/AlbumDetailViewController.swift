@@ -5,6 +5,11 @@
 //  Created by Dmitry Iv on 18.11.2021.
 //
 
+/**
+ * Detail information of selected album with displaying of album songs.
+ * With ability of playing the song. Currently playing song is displayed at the bottom in MusicPlayer
+ */
+
 import UIKit
 
 class AlbumDetailViewController: UIViewController {

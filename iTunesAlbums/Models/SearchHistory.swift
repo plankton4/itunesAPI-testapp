@@ -5,6 +5,11 @@
 //  Created by Dmitry Iv on 20.11.2021.
 //
 
+/**
+ * SearchHistory is class for storing, saving and loading history of search,
+ * primarily is used as a model for HistoryViewController
+ */
+
 import Foundation
 
 class SearchHistory {

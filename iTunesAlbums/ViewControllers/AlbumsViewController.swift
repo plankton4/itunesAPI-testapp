@@ -5,6 +5,10 @@
 //  Created by Dmitry Iv on 17.11.2021.
 //
 
+/**
+ * AlbumsViewController is used for displaying a grid of albums 
+ */
+
 import UIKit
 
 class AlbumsViewController: UIViewController {
@@ -82,7 +86,7 @@ class AlbumsViewController: UIViewController {
         albumsView.isHidden = true
         
         activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator!.center = albumsView.center
+        activityIndicator!.center = view.center
         activityIndicator!.startAnimating()
         view.addSubview(activityIndicator!)
     }

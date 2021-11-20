@@ -5,6 +5,10 @@
 //  Created by Dmitry Iv on 19.11.2021.
 //
 
+/**
+ * Utils is used for various helpful functions for the whole app
+ */
+
 import UIKit
 
 struct Utils {
