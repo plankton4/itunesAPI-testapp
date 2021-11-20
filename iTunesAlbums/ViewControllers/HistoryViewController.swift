@@ -11,7 +11,6 @@ class HistoryViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     var dummyLabel: UILabel?
-    var dummyIsActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,7 @@ class HistoryViewController: UIViewController {
                 if let weakSelf = self {
                     print("Notif received")
                     weakSelf.tableView.reloadData()
-                    if weakSelf.dummyIsActive {
+                    if weakSelf.dummyLabel != nil {
                         weakSelf.hideDummy()
                     }
                 }
@@ -41,23 +40,20 @@ class HistoryViewController: UIViewController {
     }
     
     func showDummy() {
-        dummyIsActive = true
         tableView.isHidden = true
-        dummyLabel = UILabel(frame: CGRect.zero)
-        dummyLabel!.translatesAutoresizingMaskIntoConstraints = false
+        
+        dummyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        dummyLabel!.center = view.center
+        dummyLabel!.textAlignment = .center
         dummyLabel!.text = "Empty"
         dummyLabel!.textColor = UIColor(named: "ArtistName")
         dummyLabel!.font = UIFont.systemFont(ofSize: 40, weight: .regular)
         view.addSubview(dummyLabel!)
-        NSLayoutConstraint.activate([
-            dummyLabel!.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            dummyLabel!.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
     }
     
     func hideDummy() {
-        dummyIsActive = false
         dummyLabel?.removeFromSuperview()
+        dummyLabel = nil
         tableView.isHidden = false
     }
     

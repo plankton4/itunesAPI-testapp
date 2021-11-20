@@ -55,5 +55,6 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         Searcher.shared.cancelSearch()
+        albumsViewController.hideActivityIndicator()
     }
 }

@@ -12,6 +12,7 @@ class AlbumsViewController: UIViewController {
     private let reuseIdentifier = "AlbumCell"
     private let sideInsetDistance: CGFloat = 16
     private let interitemSpacing: CGFloat = 16
+    var activityIndicator: UIActivityIndicatorView?
     var albumsView: UICollectionView!
     var albums: [Album] = []
     var searchString: String? // when not nil, we should search right away
@@ -63,6 +64,7 @@ class AlbumsViewController: UIViewController {
         
         albums.removeAll()
         albumsView.reloadData()
+        showActivityIndicator()
         
         Searcher.shared.searchAlbums(searchText: text) { [weak self] success in
             print("Success? \(success), albums count \(MusicData.shared.albums.count)")
@@ -72,7 +74,23 @@ class AlbumsViewController: UIViewController {
             } else {
                 Utils.showAlert(title: "Oops!", message: "Nothing found.", firstButtonText: "☹️")
             }
+            self?.hideActivityIndicator()
         }
+    }
+    
+    func showActivityIndicator() {
+        albumsView.isHidden = true
+        
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator!.center = albumsView.center
+        activityIndicator!.startAnimating()
+        view.addSubview(activityIndicator!)
+    }
+    
+    func hideActivityIndicator() {
+        activityIndicator?.removeFromSuperview()
+        activityIndicator = nil
+        albumsView.isHidden = false
     }
     
 }
