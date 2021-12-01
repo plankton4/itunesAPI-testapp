@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B382F732757202E006329EC /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B382F722757202E006329EC /* ImageCacher.swift */; };
 		9B6776B927453320006F5E8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6776B827453320006F5E8B /* AppDelegate.swift */; };
 		9B6776BB27453320006F5E8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6776BA27453320006F5E8B /* SceneDelegate.swift */; };
 		9B6776BD27453320006F5E8B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6776BC27453320006F5E8B /* SearchViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B382F722757202E006329EC /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
 		9B6776B527453320006F5E8B /* iTunesAlbums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesAlbums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6776B827453320006F5E8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B6776BA27453320006F5E8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				9BA5D1EF27464BF7002FC10C /* Searcher.swift */,
 				9BA5D1FB27475265002FC10C /* Utils.swift */,
+				9B382F722757202E006329EC /* ImageCacher.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			files = (
 				9B6776D127455734006F5E8B /* AlbumsViewController.swift in Sources */,
 				9BA5D1F52746589F002FC10C /* Track.swift in Sources */,
+				9B382F732757202E006329EC /* ImageCacher.swift in Sources */,
 				9BA5D1E42745611E002FC10C /* HistoryViewController.swift in Sources */,
 				9B6776BD27453320006F5E8B /* SearchViewController.swift in Sources */,
 				9BA5D1FE2747AF6D002FC10C /* MusicPlayer.swift in Sources */,

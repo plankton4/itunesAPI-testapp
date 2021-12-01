@@ -9,22 +9,35 @@ import UIKit
 
 extension UIImageView {
     
-    @discardableResult func loadImage(url: URL) -> URLSessionDownloadTask {
-        let session = Utils.imageDownloadSession 
-        let downloadTask = session.downloadTask(with: url) { [weak self] url, _, error in
-            if error == nil,
-               let url = url,
-               let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    if let weakSelf = self {
-                        weakSelf.image = image
+    @discardableResult func loadImage(url: URL) -> URLSessionDownloadTask? {
+        let originalUrl = url
+
+        if let cachedImageData = ImageCacher.shared.getCachedImage(imageUrl: originalUrl) {
+            setImageFromData(imageData: cachedImageData)
+            return nil
+        } else {
+            let session = Utils.imageDownloadSession
+            let downloadTask = session.downloadTask(with: url) { [weak self] url, _, error in
+                if error == nil,
+                   let url = url,
+                   let data = try? Data(contentsOf: url) {
+                    ImageCacher.shared.cacheImage(imageData: data, imageUrl: originalUrl)
+                    DispatchQueue.main.async {
+                        if let weakSelf = self {
+                            weakSelf.setImageFromData(imageData: data)
+                        }
                     }
                 }
             }
+            
+            downloadTask.resume()
+            return downloadTask
         }
-        
-        downloadTask.resume()
-        return downloadTask
+    }
+    
+    private func setImageFromData(imageData: Data) {
+        if let image = UIImage(data: imageData) {
+            self.image = image
+        }
     }
 }

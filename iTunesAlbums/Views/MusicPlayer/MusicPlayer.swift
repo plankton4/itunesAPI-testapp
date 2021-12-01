@@ -51,8 +51,8 @@ class MusicPlayer: UIView {
     func playTrack(track: Track, artworkUrl: String) {
         NotificationCenter.default.post(name: musicPlayerPlaceChangedNotification, object: nil, userInfo: ["musicPlayerObject": self])
         
-        if let smallUrl = URL(string: artworkUrl) {
-            imageView.loadImage(url: smallUrl)
+        if let imageUrl = URL(string: artworkUrl) {
+            imageView.loadImage(url: imageUrl)
         }
         songNameLabel.text = track.trackName
         
