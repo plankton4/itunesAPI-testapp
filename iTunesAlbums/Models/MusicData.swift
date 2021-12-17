@@ -82,8 +82,4 @@ extension MusicData {
         case album, song
         case unknown
     }
-    
-    enum ImageSize {
-        case small, medium, large
-    }
 }
