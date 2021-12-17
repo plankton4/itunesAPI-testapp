@@ -56,9 +56,6 @@ class MusicData {
                         collectionId: result.collectionId ?? -1)
                     self.unsafeAlbums.append(album)
                 }
-                self.unsafeAlbums.sort {
-                    $0.albumName < $1.albumName
-                }
             case .song:
                 self.unsafeTracks.removeAll()
                 var localTracks: [Track] = []
