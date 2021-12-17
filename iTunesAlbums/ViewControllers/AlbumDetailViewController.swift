@@ -19,7 +19,7 @@ class AlbumDetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var albumLabel: UILabel!
     @IBOutlet var artistLabel: UILabel!
-    var musicPlayerView: MusicPlayer!
+    var musicPlayerView: MusicPlayerView!
     let musicPlayerViewHeight: CGFloat = 60
     var album: Album!
     var tracks: [Track] = []
@@ -71,7 +71,7 @@ class AlbumDetailViewController: UIViewController {
             imageView.loadImage(url: largeUrl)
         }
         
-        musicPlayerView = MusicPlayer.instanceFromNib()
+        musicPlayerView = MusicPlayerView.instanceFromNib()
         view.addSubview(musicPlayerView)
         musicPlayerView.configure()
         NSLayoutConstraint.activate([

@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-class MusicPlayer: UIView {
+class MusicPlayerView: UIView {
     
     enum PlayButtonState {
         case play, pause, defaultState
@@ -22,8 +22,8 @@ class MusicPlayer: UIView {
     let musicPlayerPlaceChangedNotification = Notification.Name(rawValue: "MusicPlayerPlaceChangedNotification")
     
     
-    class func instanceFromNib() -> MusicPlayer {
-        return UINib(nibName: "MusicPlayer", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MusicPlayer
+    class func instanceFromNib() -> MusicPlayerView {
+        return UINib(nibName: "MusicPlayer", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MusicPlayerView
     }
 
     override func awakeFromNib() {
@@ -104,7 +104,7 @@ class MusicPlayer: UIView {
             queue: OperationQueue.main) { [weak self] notification in
                 if let weakSelf = self {
                     if let userInfo = notification.userInfo {
-                        if let musicPlayerObject = userInfo["musicPlayerObject"] as? MusicPlayer, musicPlayerObject !== weakSelf {
+                        if let musicPlayerObject = userInfo["musicPlayerObject"] as? MusicPlayerView, musicPlayerObject !== weakSelf {
                             weakSelf.resetToDefaultState()
                         }
                     }
