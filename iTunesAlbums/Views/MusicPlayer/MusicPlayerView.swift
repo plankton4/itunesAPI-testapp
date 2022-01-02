@@ -10,17 +10,17 @@ import AVFoundation
 
 class MusicPlayerView: UIView {
     
-    enum PlayButtonState {
+    private enum PlayButtonState {
         case play, pause, defaultState
     }
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var songNameLabel: UILabel!
+    
+    private let musicPlayerPlaceChangedNotification = Notification.Name(rawValue: "MusicPlayerPlaceChangedNotification")
     var track: Track?
     var player: AVPlayer?
-    let musicPlayerPlaceChangedNotification = Notification.Name(rawValue: "MusicPlayerPlaceChangedNotification")
-    
     
     class func instanceFromNib() -> MusicPlayerView {
         return UINib(nibName: "MusicPlayer", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MusicPlayerView
@@ -30,15 +30,8 @@ class MusicPlayerView: UIView {
         super.awakeFromNib()
         listenForPlaceChanged()
     }
-
-    func configure() {
-        translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 5
-        playButton.setTitle("", for: .normal)
-        playButton.isEnabled = false
-    }
     
-    @IBAction func playButtonClicked(_ sender: UIButton) {
+    @IBAction private func playButtonClicked(_ sender: UIButton) {
         if player?.rate == 0 {
             player?.play()
             playButtonChangeState(state: .pause)
@@ -46,6 +39,13 @@ class MusicPlayerView: UIView {
             player?.pause()
             playButtonChangeState(state: .play)
         }
+    }
+    
+    func configure() {
+        translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 5
+        playButton.setTitle("", for: .normal)
+        playButton.isEnabled = false
     }
     
     func playTrack(track: Track, artworkUrl: String) {
@@ -66,15 +66,7 @@ class MusicPlayerView: UIView {
         }
     }
     
-    func resetToDefaultState() {
-        player = nil
-        track = nil
-        imageView.image = nil
-        songNameLabel.text = "Not playing"
-        playButtonChangeState(state: .defaultState)
-    }
-    
-    func playButtonChangeState(state: PlayButtonState) {
+    private func playButtonChangeState(state: PlayButtonState) {
         switch state {
         case .play:
             playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
@@ -87,7 +79,7 @@ class MusicPlayerView: UIView {
         }
     }
     
-    @objc func finishedPlaying( _ notification: NSNotification) {
+    @objc private func finishedPlaying( _ notification: NSNotification) {
         let targetTime: CMTime = CMTimeMake(value: 0, timescale: 1)
         player?.seek(to: targetTime)
         playButtonChangeState(state: .play)
@@ -97,7 +89,7 @@ class MusicPlayerView: UIView {
      * this is needing when we try to play song from two different pages at once
      * so in another active MusicPlayer we need to reset state to default values
      */
-    func listenForPlaceChanged() {
+    private func listenForPlaceChanged() {
         NotificationCenter.default.addObserver(
             forName: musicPlayerPlaceChangedNotification,
             object: nil,
@@ -110,5 +102,13 @@ class MusicPlayerView: UIView {
                     }
                 }
             }
+    }
+    
+    private func resetToDefaultState() {
+        player = nil
+        track = nil
+        imageView.image = nil
+        songNameLabel.text = "Not playing"
+        playButtonChangeState(state: .defaultState)
     }
 }

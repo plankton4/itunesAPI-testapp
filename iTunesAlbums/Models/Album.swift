@@ -22,7 +22,6 @@ class Album {
         return smallImageUrl.replacingOccurrences(of: "source/100x100", with: "source/700x700")
     }()
     
-    
     init(artistName: String, albumName: String, smallImageUrl: String, collectionId: Int) {
         self.artistName = artistName
         self.albumName = albumName

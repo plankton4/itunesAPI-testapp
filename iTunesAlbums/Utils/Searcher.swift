@@ -10,6 +10,7 @@ import Foundation
 class Searcher {
     
     static let shared = Searcher()
+    
     private var dataTask: URLSessionDataTask?
     lazy private var session: URLSession = {
         let configuration = URLSessionConfiguration.default
@@ -17,8 +18,23 @@ class Searcher {
         return URLSession(configuration: configuration)
     }()
     
-    
     private init() {}
+    
+    func searchAlbums(searchText: String, completion: @escaping (Bool) -> Void) {
+        if let url = getUrl(searchTerm: searchText, type: .album) {
+            search(url: url, type: .album, completion: completion)
+        }
+    }
+    
+    func searchSongs(albumId: Int, completion: @escaping (Bool) -> Void) {
+        if let url = getUrl(searchTerm: String(albumId), type: .song) {
+            search(url: url, type: .song, completion: completion)
+        }
+    }
+    
+    func cancelSearch() {
+        dataTask?.cancel()
+    }
     
     private func getUrl(searchTerm: String, type: MusicData.DataType) -> URL? {
         var components = URLComponents()
@@ -45,22 +61,6 @@ class Searcher {
         }
         
         return components.url
-    }
-    
-    func searchAlbums(searchText: String, completion: @escaping (Bool) -> Void) {
-        if let url = getUrl(searchTerm: searchText, type: .album) {
-            search(url: url, type: .album, completion: completion)
-        }
-    }
-    
-    func searchSongs(albumId: Int, completion: @escaping (Bool) -> Void) {
-        if let url = getUrl(searchTerm: String(albumId), type: .song) {
-            search(url: url, type: .song, completion: completion)
-        }
-    }
-    
-    func cancelSearch() {
-        dataTask?.cancel()
     }
     
     private func search(url: URL, type: MusicData.DataType, completion: @escaping (Bool) -> Void) {

@@ -15,10 +15,10 @@ import Foundation
 class SearchHistory {
     
     static let shared = SearchHistory()
-    let searchHistoryKey = "searchHistory"
+    
+    private let searchHistoryKey = "searchHistory"
     var history: [String] = []
     let historyUpdatedNotification = Notification.Name(rawValue: "HistoryUpdatedNotification")
-    
     
     private init() {
         history = UserDefaults.standard.stringArray(forKey: searchHistoryKey) ?? []

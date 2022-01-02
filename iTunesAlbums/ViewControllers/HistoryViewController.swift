@@ -14,6 +14,7 @@ import UIKit
 class HistoryViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
+    
     var dummyLabel: UILabel?
     
     override func viewDidLoad() {
@@ -26,7 +27,17 @@ class HistoryViewController: UIViewController {
         }
     }
     
-    func listenForHistoryUpdates() {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AlbumsViewFromHistory" {
+            if let vc = segue.destination as? AlbumsViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    vc.searchString = SearchHistory.shared.history[indexPath.row]
+                }
+            }
+        }
+    }
+    
+    private func listenForHistoryUpdates() {
         NotificationCenter.default.addObserver(
             forName: SearchHistory.shared.historyUpdatedNotification,
             object: nil,
@@ -40,7 +51,7 @@ class HistoryViewController: UIViewController {
             }
     }
     
-    func showDummy() {
+    private func showDummy() {
         tableView.isHidden = true
         
         dummyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
@@ -52,20 +63,10 @@ class HistoryViewController: UIViewController {
         view.addSubview(dummyLabel!)
     }
     
-    func hideDummy() {
+    private func hideDummy() {
         dummyLabel?.removeFromSuperview()
         dummyLabel = nil
         tableView.isHidden = false
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AlbumsViewFromHistory" {
-            if let vc = segue.destination as? AlbumsViewController {
-                if let indexPath = tableView.indexPathForSelectedRow {
-                    vc.searchString = SearchHistory.shared.history[indexPath.row]
-                }
-            }
-        }
     }
 }
 

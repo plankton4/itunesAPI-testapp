@@ -21,45 +21,12 @@ class AlbumsViewController: UIViewController {
     var albums: [Album] = []
     var searchString: String? // when not nil, we should search right away
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         if let searchString = searchString {
             performSearch(text: searchString, writeToHistory: false)
         }
-    }
-    
-    func setupView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = interitemSpacing
-        
-        albumsView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
-        albumsView.translatesAutoresizingMaskIntoConstraints = false
-        albumsView.showsVerticalScrollIndicator = false
-        albumsView.backgroundColor = .systemBackground
-        albumsView.delegate = self
-        albumsView.dataSource = self
-        albumsView.contentInset = UIEdgeInsets(
-            top: 8,
-            left: sideInsetDistance,
-            bottom: 20,
-            right: sideInsetDistance)
-        
-        let nibName = UINib(nibName: "AlbumCell", bundle: nil)
-        albumsView.register(nibName, forCellWithReuseIdentifier: reuseIdentifier)
-        
-        view.addSubview(albumsView)
-        
-        NSLayoutConstraint.activate([
-            albumsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            albumsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            albumsView.topAnchor.constraint(equalTo: view.topAnchor),
-            albumsView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
     
     func performSearch(text: String, writeToHistory: Bool = true) {
@@ -97,6 +64,37 @@ class AlbumsViewController: UIViewController {
         albumsView.isHidden = false
     }
     
+    private func setupView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumLineSpacing = 16
+        layout.minimumInteritemSpacing = interitemSpacing
+        
+        albumsView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
+        albumsView.translatesAutoresizingMaskIntoConstraints = false
+        albumsView.showsVerticalScrollIndicator = false
+        albumsView.backgroundColor = .systemBackground
+        albumsView.delegate = self
+        albumsView.dataSource = self
+        albumsView.contentInset = UIEdgeInsets(
+            top: 8,
+            left: sideInsetDistance,
+            bottom: 20,
+            right: sideInsetDistance)
+        
+        let nibName = UINib(nibName: "AlbumCell", bundle: nil)
+        albumsView.register(nibName, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        view.addSubview(albumsView)
+        
+        NSLayoutConstraint.activate([
+            albumsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            albumsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            albumsView.topAnchor.constraint(equalTo: view.topAnchor),
+            albumsView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
 }
 
 extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSource {

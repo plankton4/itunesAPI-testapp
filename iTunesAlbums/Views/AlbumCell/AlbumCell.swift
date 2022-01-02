@@ -12,8 +12,8 @@ class AlbumCell: UICollectionViewCell {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var albumName: UILabel!
     @IBOutlet var artistName: UILabel!
-    var downloadTask: URLSessionDownloadTask?
     
+    var downloadTask: URLSessionDownloadTask?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,5 +43,4 @@ class AlbumCell: UICollectionViewCell {
             widthConstraint
         ])
     }
-
 }

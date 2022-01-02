@@ -24,7 +24,6 @@ class SearchViewController: UIViewController {
         return searchController
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.searchController = searchController

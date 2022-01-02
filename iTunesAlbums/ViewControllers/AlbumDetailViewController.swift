@@ -19,12 +19,13 @@ class AlbumDetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var albumLabel: UILabel!
     @IBOutlet var artistLabel: UILabel!
+    
+    private let musicPlayerViewHeight: CGFloat = 60
+    private var isFirstDidLayoutSubviews = true
     var musicPlayerView: MusicPlayerView!
-    let musicPlayerViewHeight: CGFloat = 60
     var album: Album!
     var tracks: [Track] = []
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -46,18 +47,20 @@ class AlbumDetailViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let width = view.bounds.width * 0.6
-        NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: width),
-            imageView.heightAnchor.constraint(equalToConstant: width),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        if isFirstDidLayoutSubviews {
+            let width = view.bounds.width * 0.6
+            NSLayoutConstraint.activate([
+                imageView.widthAnchor.constraint(equalToConstant: width),
+                imageView.heightAnchor.constraint(equalToConstant: width),
+                imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
+            headerView.layoutIfNeeded()
+        }
         
-        view.layoutIfNeeded()
-        tableView.reloadData()
+        isFirstDidLayoutSubviews = false
     }
     
-    func setupView() {
+    private func setupView() {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: musicPlayerViewHeight, right: 0)
         albumLabel.text = album.albumName
         artistLabel.text = album.artistName

@@ -10,8 +10,8 @@ import Foundation
 class ImageCacher {
     
     static let shared = ImageCacher()
-    private let cache = NSCache<NSURL, NSData>()
     
+    private let cache = NSCache<NSURL, NSData>()
     
     private init() {}
     
@@ -22,5 +22,4 @@ class ImageCacher {
     func cacheImage(imageData: Data, imageUrl: URL) {
         cache.setObject(imageData as NSData, forKey: imageUrl as NSURL)
     }
-    
 }
