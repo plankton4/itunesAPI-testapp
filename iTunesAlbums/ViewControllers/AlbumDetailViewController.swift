@@ -70,7 +70,7 @@ class AlbumDetailViewController: UIViewController {
         imageView.image = UIImage(systemName: "arrow.down.square.fill")
         if let largeUrl = URL(string: album.largeImageUrl) {
             imageView.loadImage(url: largeUrl) { [weak self] in
-                self?.tableView.reloadData()
+                self?.headerView.setNeedsLayout()
             }
         }
         
