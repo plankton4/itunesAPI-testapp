@@ -46,7 +46,7 @@ class AlbumDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         if isFirstDidLayoutSubviews {
             let width = view.bounds.width * 0.6
             NSLayoutConstraint.activate([
@@ -54,9 +54,7 @@ class AlbumDetailViewController: UIViewController {
                 imageView.heightAnchor.constraint(equalToConstant: width),
                 imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
-            headerView.layoutIfNeeded()
         }
-        
         isFirstDidLayoutSubviews = false
     }
     
@@ -71,7 +69,9 @@ class AlbumDetailViewController: UIViewController {
         imageView.layer.cornerRadius = 10
         imageView.image = UIImage(systemName: "arrow.down.square.fill")
         if let largeUrl = URL(string: album.largeImageUrl) {
-            imageView.loadImage(url: largeUrl)
+            imageView.loadImage(url: largeUrl) { [weak self] in
+                self?.tableView.reloadData()
+            }
         }
         
         musicPlayerView = MusicPlayerView.instanceFromNib()

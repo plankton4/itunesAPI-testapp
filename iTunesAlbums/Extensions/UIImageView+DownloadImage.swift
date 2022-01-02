@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImageView {
     
-    @discardableResult func loadImage(url: URL) -> URLSessionDownloadTask? {
+    @discardableResult func loadImage(url: URL, callback: (() -> Void)? = nil) -> URLSessionDownloadTask? {
         let originalUrl = url
 
         if let cachedImageData = ImageCacher.shared.getCachedImage(imageUrl: originalUrl) {
@@ -25,6 +25,9 @@ extension UIImageView {
                     DispatchQueue.main.async {
                         if let weakSelf = self {
                             weakSelf.setImageFromData(imageData: data)
+                            if let callback = callback {
+                                callback()
+                            }
                         }
                     }
                 }
