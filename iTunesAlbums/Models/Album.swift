@@ -15,11 +15,11 @@ class Album {
     var albumId: Int
     
     lazy var mediumImageUrl: String = {
-        return smallImageUrl.replacingOccurrences(of: "source/100x100", with: "source/450x450")
+        return smallImageUrl.replacingOccurrences(of: "100x100", with: "450x450")
     }()
     
     lazy var largeImageUrl: String = {
-        return smallImageUrl.replacingOccurrences(of: "source/100x100", with: "source/700x700")
+        return smallImageUrl.replacingOccurrences(of: "100x100", with: "700x700")
     }()
     
     init(artistName: String, albumName: String, smallImageUrl: String, collectionId: Int) {
