@@ -21,7 +21,6 @@ class AlbumDetailViewController: UIViewController {
     @IBOutlet var artistLabel: UILabel!
     
     private let musicPlayerViewHeight: CGFloat = 60
-    private var isFirstDidLayoutSubviews = true
     var musicPlayerView: MusicPlayerView!
     var album: Album!
     var tracks: [Track] = []
@@ -44,36 +43,31 @@ class AlbumDetailViewController: UIViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        if isFirstDidLayoutSubviews {
-            let width = view.bounds.width * 0.6
-            NSLayoutConstraint.activate([
-                imageView.widthAnchor.constraint(equalToConstant: width),
-                imageView.heightAnchor.constraint(equalToConstant: width),
-                imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
-        }
-        isFirstDidLayoutSubviews = false
-    }
-    
     private func setupView() {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: musicPlayerViewHeight, right: 0)
         albumLabel.text = album.albumName
         artistLabel.text = album.artistName
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        // setting up imageView
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 10
         imageView.image = UIImage(systemName: "arrow.down.square.fill")
+        
+        let width = view.bounds.width * 0.6
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: width),
+            imageView.heightAnchor.constraint(equalToConstant: width),
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
         if let largeUrl = URL(string: album.largeImageUrl) {
             imageView.loadImage(url: largeUrl) { [weak self] in
                 self?.headerView.setNeedsLayout()
             }
         }
         
+        // setting up musicPlayerView
         musicPlayerView = MusicPlayerView.instanceFromNib()
         view.addSubview(musicPlayerView)
         musicPlayerView.configure()
